@@ -7,30 +7,73 @@ public class CardDeck {
 	private List<Card> arr = new ArrayList();
 
 	public CardDeck() {
-		
-		// String[] cards = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J",
-		// "Q", "K"};
-
-		for (int i = 0; i < Card.PATTERNS.length; i++) {
-			for (int j = 1; j <= 13; j++) {
-				String cardnum = "";
-				
-				switch (j) {
-				case 1:
-					cardnum = "A"; break;
-				case 11:
-					cardnum = "J"; break;
-				case 12:
-					cardnum = "Q"; break;
-				case 13:
-					cardnum = "K"; break;
-				default:
-					cardnum = String.valueOf(j); break;
-				}
-				
-				arr.add(new Card(Card.PATTERNS[i], cardnum));
+		init();
+	}
+	
+	private void init() {
+		for(int i=0; i<Card.PATTERNS.length; i++) {
+			for(int z=1; z<=13; z++) {
+				//arr.add(new Card(Card.PATTERNS[i], getDeno(z)));
+				String pattern = Card.PATTERNS[i];
+				String deno = getDeno(z);
+				int point = getPoint(z);
+				Card c = new Card(pattern, deno, point);
+				arr.add(c);
 			}
-
 		}
 	}
+	
+	private int getPoint(int num) {
+		return num > 10 ? 10 : num;
+	}
+	
+	private String getDeno(int num) {
+		switch(num) {
+		case 1: return "A";
+		case 11: return "J";
+		case 12: return "Q";
+		case 13: return "K";
+		default: return String.valueOf(num);
+		}
+	}
+	
+	
+	@Override
+	public String toString() {
+		
+		String str = "";
+		
+		for(Card cd : arr) {
+			str += cd;
+			
+			//System.out.println(cd); return을 ""로 해주는 얍삽스
+			
+			// str += String.format("p : %s, d : %s\n", cd.getPattern(), cd.getDenomination());
+		}
+		
+		return str;
+		
+		//return arr.toString();
+	}	
+	
+	
+	public Card getCard() {
+		int num = (int)(Math.random() * arr.size());	
+		return arr.remove(num);
+		
+//		int num = (int)(Math.random() * 52);
+//		for(int i=0; i<arr.size(); i++) {
+//			Card cd = arr.get(num);
+//			arr.remove(num);
+//			arr.add(i, cd);
+//
+//		}
+		
+	}
+	
+	
+	
+	
+	
+	
 }
