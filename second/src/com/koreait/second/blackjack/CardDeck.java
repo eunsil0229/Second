@@ -1,4 +1,4 @@
-package com.koreait.blackjack;
+package com.koreait.second.blackjack;
 
 import java.util.ArrayList;
 import java.util.List;

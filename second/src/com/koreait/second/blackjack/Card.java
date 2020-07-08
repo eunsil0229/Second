@@ -1,8 +1,8 @@
-package com.koreait.blackjack;
+package com.koreait.second.blackjack;
 
 public class Card {
 	
-	public final static String[] PATTERNS = { "스페이드", "하트", "에이스", "클로버" };
+	public final static String[] PATTERNS = { "♠", "♥", "♣", "◆" };
 	private final String pattern;
 	private final String denomination;
 	private final int point;
@@ -29,7 +29,7 @@ public class Card {
 	
 	@Override
 	public String toString() {
-		return String.format("p : %s, d : %s, p : %d\n", pattern, denomination, point);
+		return String.format("%s %s\tPoint : %d", pattern, denomination, point);
 	}
 
 	
